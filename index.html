@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>teaki</title>
+  <script type="module">
+    window['routerLinkSetup'] = (queryTarget) => {
+      queryTarget.querySelectorAll('[data-route]').forEach((routerLink) => {
+        routerLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          const path = event.target.dataset.route;
+          const params = event.target.dataset.routeparams;
+          const pushState = params ? `${path}?${params}` : path;
+          window.history.pushState({}, '', pushState);
+          route(path);
+        });
+      });
+    }
+
+    routerLinkSetup(document);
+
+    window.addEventListener('popstate', (event) => {
+      event.preventDefault();
+      route(window.location.pathname);
+    })
+
+    window['route'] = (page) => {
+      switch (page) {
+        default:
+          import('./src/teas/teas').then(() => {
+            document.querySelector('#router-outlet').innerHTML = '<app-teas></app-teas>';
+          });
+      }
+    }
+
+    window.onload = () => {
+      route(window.location.pathname);
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <h1>teaki</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="/" data-route="/">teas</a>
+        </li>
+        <li>sessions</li>
+        <li>manage</li>
+      </ul>
+    </nav>
+  </header>
+  <hr />
+  <main id="router-outlet"></main>
+</body>
+</html>
