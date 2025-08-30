@@ -1,14 +1,18 @@
-import html from './teas.component.html?raw';
+import html from './tea-viewer.component.html?raw';
+import styles from './tea-viewer.component.scss?raw';
 
 const template = document.createElement('template');
 template.innerHTML = `${html}`;
+const css = new CSSStyleSheet();
+css.replaceSync(styles);
 
-export const TEAS_TAG_NAME = 'app-teas';
+export const TEA_VIEWER_TAG_NAME = 'tea-viewer';
 
-export class AppTeasComponent extends HTMLElement {
+export class TeaViewerComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.adoptedStyleSheets = [css];
     this.shadowRoot?.appendChild(template.content.cloneNode(true));
     this.init().then((value) => {
       this.createRows(value);
@@ -45,8 +49,9 @@ export class AppTeasComponent extends HTMLElement {
       let td = clone.querySelectorAll('td');
       td[0].textContent = tea?.name;
       td[1].textContent = tea?.typeId;
-      td[2].textContent = tea?.origin;
-      td[3].textContent = tea?.isAvailable;
+      td[2].textContent = tea?.vendor;
+      td[3].textContent = tea?.origin;
+      td[4].textContent = tea?.isAvailable;
       tbody.appendChild(clone);
     }
   }
