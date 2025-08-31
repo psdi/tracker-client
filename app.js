@@ -21,8 +21,8 @@ window.addEventListener('popstate', (event) => {
 window['route'] = (page) => {
   switch (page) {
     case '/tea':
-      import('./src/tea-form/tea-form').then(() => {
-        document.querySelector('#route-outlet').innerHTML = '<tea-form></tea-form>';
+      import('./src/tea-details/tea-details').then(() => {
+        document.querySelector('#router-outlet').innerHTML = '<tea-details></tea-details>';
       });
       break;
     default:
@@ -34,5 +34,7 @@ window['route'] = (page) => {
 };
 
 window.onload = () => {
-  route(window.location.pathname);
+  const rx = /(\/[a-zA-Z]+)\/?/;
+  const main = rx.exec(window.location.pathname);
+  route(Array.isArray(main) ? main[1] : '');
 };

@@ -26,7 +26,7 @@ export class TeaViewerComponent extends HTMLElement {
   async init() {
     try {
       const response = await fetch(
-          'http://localhost:8000/teas',
+          '/teas',
           {
             method: 'GET',
           }
@@ -52,6 +52,7 @@ export class TeaViewerComponent extends HTMLElement {
       td[2].textContent = tea?.vendor;
       td[3].textContent = tea?.origin;
       td[4].textContent = tea?.isAvailable;
+      td[5].querySelector('a').href = `/tea/${tea?.id}`;
       tbody.appendChild(clone);
     }
   }
