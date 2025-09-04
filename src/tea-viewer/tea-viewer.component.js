@@ -1,5 +1,6 @@
 import html from './tea-viewer.component.html?raw';
 import styles from './tea-viewer.component.scss?raw';
+import {TeaType} from "../TeaType";
 
 const template = document.createElement('template');
 template.innerHTML = `${html}`;
@@ -47,8 +48,9 @@ export class TeaViewerComponent extends HTMLElement {
     for (const tea of teas) {
       const clone = template.content.cloneNode(true);
       let td = clone.querySelectorAll('td');
+      const teaKey = Object.keys(TeaType).find(key => TeaType[key].id === tea?.typeId);
       td[0].textContent = tea?.name;
-      td[1].textContent = tea?.typeId;
+      td[1].textContent = TeaType[teaKey]?.str || 'unknown';
       td[2].textContent = tea?.vendor;
       td[3].textContent = tea?.origin;
       td[4].textContent = tea?.isAvailable;

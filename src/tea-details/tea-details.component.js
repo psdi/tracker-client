@@ -1,5 +1,6 @@
 import html from './tea-details.component.html?raw';
 import styles from './tea-details.component.scss?raw';
+import {TeaType} from "../TeaType";
 
 const template = document.createElement('template');
 template.innerHTML = `${html}`;
@@ -40,8 +41,9 @@ export class TeaDetailsComponent extends HTMLElement {
 
   setValues(tea) {
     const details = this.shadowRoot.querySelector('#single-tea-details');
+    const teaKey = Object.keys(TeaType).find(key => TeaType[key].id === tea?.typeId);
     details.querySelector('#name').textContent = tea?.name;
-    details.querySelector('#type').textContent = tea?.typeId;
+    details.querySelector('#type').textContent = TeaType[teaKey]?.str || 'unknown';
     details.querySelector('#origin').textContent = tea?.origin;
     details.querySelector('#harvest-year').textContent = tea?.harvestYear || 'unknown';
     details.querySelector('#vendor').textContent = tea?.vendor;

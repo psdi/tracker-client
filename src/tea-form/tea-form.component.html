@@ -1,0 +1,38 @@
+<h3>Add new tea</h3>
+<form id="create-tea-form">
+  <div class="form-row">
+    <label for="nameId">Tea name</label>
+    <select id="nameId" name="nameId">
+      <option value="null" disabled selected>-- Select name --</option>
+      <option value="-">Other</option>
+    </select>
+    <label for="typeId">Tea type</label>
+    <select id="typeId" name="type">
+      <option value="null" disabled selected>-- Select type --</option>
+    </select>
+  </div>
+  <div class="form-row hidden-row">
+    <label for="name">Custom name</label>
+    <input type="text" id="name" name="name" placeholder="Tea name" />
+    <label for="alias">Alias</label>
+    <input type="text" id="alias" name="alias" placeholder="Alias" />
+  </div>
+  <div class="form-row">
+    <label for="harvestYear">Harvest Year</label>
+    <input type="number" id="harvestYear" name="harvestYear" />
+
+    <label for="amount">Amount in grams</label>
+    <input type="number" id="amount" name="amount" />
+  </div>
+  <div class="form-row">
+    <label for="vendorId">Vendor</label>
+    <select id="vendorId" name="vendorId"></select>
+    <label for="originId">Origin</label>
+    <select id="originId" name="originId"></select>
+  </div>
+  <div class="form-row">
+    <label for="remarks">Remarks</label>
+    <textarea id="remarks" maxlength="150" placeholder="Remarks"></textarea>
+  </div>
+  <button>Submit</button>
+</form>

@@ -25,6 +25,11 @@ window['route'] = (page) => {
         document.querySelector('#router-outlet').innerHTML = '<tea-details></tea-details>';
       });
       break;
+    case '/add':
+      import('./src/tea-form/tea-form').then(() => {
+        document.querySelector('#router-outlet').innerHTML = '<tea-form></tea-form>';
+      });
+      break;
     default:
       import('./src/tea-viewer/tea-viewer').then(() => {
         document.querySelector('#router-outlet').innerHTML = '<tea-viewer></tea-viewer>';
