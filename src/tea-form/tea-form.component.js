@@ -17,6 +17,7 @@ export class TeaFormComponent extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     void this.fillNameSelectOptions();
     this.fillTypeSelectOptions();
+    this.toggleCustomInputField('select#nameId', 'div.custom-name-row');
   }
 
   connectedCallback() {
@@ -50,6 +51,21 @@ export class TeaFormComponent extends HTMLElement {
       option.value = name.id;
       option.textContent = name.value;
       select.appendChild(option);
+    });
+  }
+
+  /**
+   * @param ref Selector of reference `select` element: if the use selects `other`, show hidden fields
+   * @param custom Selector(s) of hidden fields to toggle visibility of
+   */
+  toggleCustomInputField(ref, custom) {
+    const elems = this.shadowRoot.querySelectorAll(custom);
+    this.shadowRoot.querySelector(ref).addEventListener('change', (event) => {
+      if ((event.target.value === '-' && elems[0].hasAttribute('hidden'))
+        || (event.target.value !== '-' && !elems[0].hasAttribute('hidden'))
+      ) {
+        elems.forEach(elem => elem.toggleAttribute('hidden'));
+      }
     });
   }
 }

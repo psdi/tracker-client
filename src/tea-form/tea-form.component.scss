@@ -1,6 +1,37 @@
 form#create-tea-form {
   display: flex;
   flex-direction: column;
+  width: 37rem;
 
-  div.form-row {}
+  div[hidden] {
+    display: none !important;
+  }
+
+  div.form-row {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.25rem;
+
+    div.form-unit {
+      margin-right: 1rem;
+
+      & > * {
+        display: block;
+        margin: 0.25rem 0;
+        box-sizing: content-box;
+      }
+
+      input[type=text], input[type=number], select {
+        padding: 0.5rem 0.4rem;
+        width: 12.5rem;
+        &.short { width: 7rem; }
+        &.long { width: 18rem; }
+        &.full { width: 27rem; }
+      }
+
+      textarea {
+        width: 27rem;
+      }
+    }
+  }
 }

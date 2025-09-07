@@ -49,11 +49,17 @@ export class TeaViewerComponent extends HTMLElement {
       const clone = template.content.cloneNode(true);
       let td = clone.querySelectorAll('td');
       const teaKey = Object.keys(TeaType).find(key => TeaType[key].id === tea?.typeId);
+      const avb = tea?.isAvailable || false;
       td[0].textContent = tea?.name;
       td[1].textContent = TeaType[teaKey]?.str || 'unknown';
       td[2].textContent = tea?.vendor;
       td[3].textContent = tea?.origin;
-      td[4].textContent = tea?.isAvailable;
+      td[4].innerHTML = `
+        <span class="badge ${avb ? 'active' : 'inactive'}">
+          <span class="color-ball">&#9679;</span>
+          ${avb ? 'yes' : 'no'}
+        </span>
+      `;
       td[5].querySelector('a').href = `/tea/${tea?.id}`;
       tbody.appendChild(clone);
     }

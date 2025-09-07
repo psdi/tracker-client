@@ -1,38 +1,68 @@
-<h3>Add new tea</h3>
+<h2>Add new tea</h2>
 <form id="create-tea-form">
   <div class="form-row">
-    <label for="nameId">Tea name</label>
-    <select id="nameId" name="nameId">
-      <option value="null" disabled selected>-- Select name --</option>
-      <option value="-">Other</option>
-    </select>
-    <label for="typeId">Tea type</label>
-    <select id="typeId" name="type">
-      <option value="null" disabled selected>-- Select type --</option>
-    </select>
+    <div class="form-unit">
+      <label for="nameId">Tea name</label>
+      <select id="nameId" name="nameId" class="long">
+        <option value="null" disabled selected>-- Select name --</option>
+        <option value="-">Other</option>
+      </select>
+    </div>
+    <div class="form-unit">
+      <label for="typeId">Tea type</label>
+      <select id="typeId" name="type" class="short">
+        <option value="null" disabled selected>-- Select type --</option>
+      </select>
+    </div>
   </div>
-  <div class="form-row hidden-row">
-    <label for="name">Custom name</label>
-    <input type="text" id="name" name="name" placeholder="Tea name" />
-    <label for="alias">Alias</label>
-    <input type="text" id="alias" name="alias" placeholder="Alias" />
-  </div>
-  <div class="form-row">
-    <label for="harvestYear">Harvest Year</label>
-    <input type="number" id="harvestYear" name="harvestYear" />
 
-    <label for="amount">Amount in grams</label>
-    <input type="number" id="amount" name="amount" />
+  <div class="form-row custom-name-row" hidden>
+    <div class="form-unit">
+      <label for="name">Custom name</label>
+      <input type="text" id="name" name="name" class="full" placeholder="Tea name" />
+    </div>
   </div>
-  <div class="form-row">
-    <label for="vendorId">Vendor</label>
-    <select id="vendorId" name="vendorId"></select>
-    <label for="originId">Origin</label>
-    <select id="originId" name="originId"></select>
+  <div class="form-row custom-name-row" hidden>
+    <div class="form-unit">
+      <label for="alias">Alias</label>
+      <input type="text" id="alias" name="alias" class="full" placeholder="Alias" />
+    </div>
   </div>
+
   <div class="form-row">
-    <label for="remarks">Remarks</label>
-    <textarea id="remarks" maxlength="150" placeholder="Remarks"></textarea>
+    <div class="form-unit">
+      <label for="harvestYear">Harvest Year</label>
+      <input type="number" id="harvestYear" name="harvestYear" class="short" placeholder="Year" />
+    </div>
+    <div class="form-unit">
+      <label for="originId">Origin</label>
+      <select id="originId" name="originId" class="long"></select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-unit">
+      <label for="amount">Amount in grams</label>
+      <input type="number" id="amount" name="amount" class="short" placeholder="Amount" />
+    </div>
+    <div class="form-unit">
+      <label for="vendorId">Vendor</label>
+      <select id="vendorId" name="vendorId" class="long"></select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-unit">
+      <input type="checkbox" id="isAvailable" name="isAvailable" />
+      <label for="isAvailable">Available?</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-unit">
+      <label for="remarks">Remarks</label>
+      <textarea id="remarks" maxlength="150" placeholder="Remarks"></textarea>
+    </div>
   </div>
   <button>Submit</button>
 </form>

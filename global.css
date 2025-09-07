@@ -1,0 +1,21 @@
+span.badge {
+  padding: 0.25rem 0.75rem;
+  text-align: center;
+  border-radius: 14px;
+}
+
+span.badge.active {
+  background-color: var(--light-green);
+}
+
+span.badge.active .color-ball {
+  color: green;
+}
+
+span.badge.inactive {
+  background-color: var(--light-grey);
+}
+
+span.badge.inactive .color-ball {
+  color: var(--black);
+}

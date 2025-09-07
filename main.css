@@ -1,6 +1,14 @@
 :root {
   --black: #3e3e3e;
   --white: #ffffff;
+  --grey: #a3a3a3;
+  --light-grey: #dcdcdc;
+  --green: #c2c398;
+  --light-green: #eaecad;
+  --dark-green: #5e5e2b;
+  --blue: #7c9885;
+  --red: #d1603d;
+  --yellow: #fedc97;
 }
 
 header h1 {
