@@ -36,7 +36,17 @@
     </div>
     <div class="form-unit">
       <label for="originId">Origin</label>
-      <select id="originId" name="originId" class="long"></select>
+      <select id="originId" name="originId" class="long">
+        <option value="null" disabled selected>-- Select origin --</option>
+        <option value="-">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row custom-origin-row" hidden>
+    <div class="form-unit">
+      <label for="origin">Custom origin</label>
+      <input type="text" id="origin" class="full" placeholder="Tea origin" />
     </div>
   </div>
 
@@ -47,12 +57,22 @@
     </div>
     <div class="form-unit">
       <label for="vendorId">Vendor</label>
-      <select id="vendorId" name="vendorId" class="long"></select>
+      <select id="vendorId" name="vendorId" class="long">
+        <option value="null" disabled selected>-- Select vendor --</option>
+        <option value="-">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row custom-vendor-row" hidden>
+    <div class="form-unit">
+      <label for="vendor">Custom vendor</label>
+      <input type="text" id="vendor" class="full" placeholder="Tea vendor" />
     </div>
   </div>
 
   <div class="form-row">
-    <div class="form-unit">
+    <div class="form-unit inline">
       <input type="checkbox" id="isAvailable" name="isAvailable" />
       <label for="isAvailable">Available?</label>
     </div>
@@ -61,8 +81,8 @@
   <div class="form-row">
     <div class="form-unit">
       <label for="remarks">Remarks</label>
-      <textarea id="remarks" maxlength="150" placeholder="Remarks"></textarea>
+      <textarea id="remarks" class="full" maxlength="150" placeholder="Remarks"></textarea>
     </div>
   </div>
-  <button>Submit</button>
+  <button class="full">Submit</button>
 </form>

@@ -7,6 +7,23 @@ form#create-tea-form {
     display: none !important;
   }
 
+  input[type=text], input[type=number], select, button, textarea {
+    padding: 0.5rem 0.4rem;
+    width: 12.5rem;
+    &.short { width: 7rem; }
+    &.long { width: 18rem; }
+    &.full { width: 27rem; }
+  }
+
+  textarea {
+    width: 27rem;
+    height: 3rem;
+  }
+
+  * {
+    box-sizing: content-box;
+  }
+
   div.form-row {
     display: flex;
     justify-content: flex-start;
@@ -15,22 +32,15 @@ form#create-tea-form {
     div.form-unit {
       margin-right: 1rem;
 
-      & > * {
+      &:not(.inline) > * {
         display: block;
         margin: 0.25rem 0;
-        box-sizing: content-box;
       }
 
-      input[type=text], input[type=number], select {
-        padding: 0.5rem 0.4rem;
-        width: 12.5rem;
-        &.short { width: 7rem; }
-        &.long { width: 18rem; }
-        &.full { width: 27rem; }
-      }
-
-      textarea {
-        width: 27rem;
+      &.inline {
+        display: flex;
+        padding: 0.25rem 0;
+        align-items: center;
       }
     }
   }

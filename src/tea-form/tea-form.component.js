@@ -8,6 +8,7 @@ const css = new CSSStyleSheet();
 css.replaceSync(styles);
 
 export const TEA_FORM_TAG_NAME = 'tea-form';
+const API_ENDPOINT = '';
 
 export class TeaFormComponent extends HTMLElement {
   constructor() {
@@ -15,9 +16,17 @@ export class TeaFormComponent extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.adoptedStyleSheets = [css];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    void this.fillNameSelectOptions();
+
+    // Build form dropdown elements
+    void this.fillDropdownElements('select#nameId', 'names');
+    void this.fillDropdownElements('select#vendorId', 'vendors');
+    void this.fillDropdownElements('select#originId', 'locations');
     this.fillTypeSelectOptions();
+
+    // Set up events for custom text inputs
     this.toggleCustomInputField('select#nameId', 'div.custom-name-row');
+    this.toggleCustomInputField('select#originId', 'div.custom-origin-row');
+    this.toggleCustomInputField('select#vendorId', 'div.custom-vendor-row');
   }
 
   connectedCallback() {
@@ -34,22 +43,23 @@ export class TeaFormComponent extends HTMLElement {
     });
   }
 
-  async fillNameSelectOptions() {
-    const select = this.shadowRoot.querySelector('select#nameId');
-    let names = [];
+  async fillDropdownElements(selector, resource) {
+    if (!selector || !resource) return;
+    const select = this.shadowRoot.querySelector(selector);
+    let entities = [];
     try {
-      const response = await fetch('/names');
+      const response = await fetch(`${API_ENDPOINT}/${resource}`);
       if (!response.ok) {
         throw new Error(`Response message: ${response.status}`);
       }
-      names = await response.json();
+      entities = await response.json();
     } catch (error) {
       console.error(error);
     }
-    names.forEach((name) => {
+    entities.forEach((entity) => {
       let option = document.createElement('option');
-      option.value = name.id;
-      option.textContent = name.value;
+      option.value = entity.id;
+      option.textContent = entity.value;
       select.appendChild(option);
     });
   }
