@@ -1,17 +1,17 @@
 <h2>Add new tea</h2>
-<form id="create-tea-form">
+<form id="create-tea-form" autocomplete="off">
   <div class="form-row">
     <div class="form-unit">
       <label for="nameId">Tea name</label>
-      <select id="nameId" name="nameId" class="long">
-        <option value="null" disabled selected>-- Select name --</option>
-        <option value="-">Other</option>
+      <select id="nameId" name="nameId" class="long" required>
+        <option value="" disabled selected>-- Select name --</option>
+        <option value="">Other</option>
       </select>
     </div>
     <div class="form-unit">
       <label for="typeId">Tea type</label>
-      <select id="typeId" name="type" class="short">
-        <option value="null" disabled selected>-- Select type --</option>
+      <select id="typeId" name="type" class="short" required>
+        <option value="" disabled selected>-- Select type --</option>
       </select>
     </div>
   </div>
@@ -37,8 +37,8 @@
     <div class="form-unit">
       <label for="originId">Origin</label>
       <select id="originId" name="originId" class="long">
-        <option value="null" disabled selected>-- Select origin --</option>
-        <option value="-">Other</option>
+        <option value="" disabled selected>-- Select origin --</option>
+        <option value="">Other</option>
       </select>
     </div>
   </div>
@@ -57,9 +57,9 @@
     </div>
     <div class="form-unit">
       <label for="vendorId">Vendor</label>
-      <select id="vendorId" name="vendorId" class="long">
-        <option value="null" disabled selected>-- Select vendor --</option>
-        <option value="-">Other</option>
+      <select id="vendorId" name="vendorId" class="long" required>
+        <option value="" disabled selected>-- Select vendor --</option>
+        <option value="">Other</option>
       </select>
     </div>
   </div>
@@ -81,8 +81,8 @@
   <div class="form-row">
     <div class="form-unit">
       <label for="remarks">Remarks</label>
-      <textarea id="remarks" class="full" maxlength="150" placeholder="Remarks"></textarea>
+      <textarea id="remarks" name="remarks" class="full" maxlength="150" placeholder="Remarks"></textarea>
     </div>
   </div>
-  <button class="full">Submit</button>
+  <button class="full" id="btn-submit">Submit</button>
 </form>
